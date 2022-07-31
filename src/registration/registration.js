@@ -44,7 +44,7 @@ function Registration() {
           <p className="text form__error">{errors.passwordagain}{values.password === values.passwordagain ? '' : 'Пароли не совпадают'}</p>
   </label>
         <button type="submit" className={`btn button__signin reg__btn-signin ${isValid && values.password === values.passwordagain    ? '' : 'disable'}`}><Link to={'/login'} className="btn signin__ent ent_sign">Зарегистрироваться</Link></button>
-        <p className='btn button__login reg__btn-login'><Link to={'/login'} className="btn login__ent">Войти</Link></p>
+        <p className='btn button__login reg__btn-login'><Link to={'/login'} className="btn login__ent ent__sign">Войти</Link></p>
      </form>
      
      </>

@@ -34,7 +34,7 @@ function Login() {
           <p className="text form__error">{errors.password}</p>
   </label>
         <button type="submit" className={`btn button__signin reg__btn-signin ${isValid ? '' : 'disable'}`}><Link to={'/main'} className="btn signin__ent ent_sign">Авторизоваться</Link></button>
-
+        <p className='btn button__login reg__btn-login'><Link to={'/registration'} className="btn login__ent ent__sign">Нет аккаунта?</Link></p>
      </form>
      
      </>
