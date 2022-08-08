@@ -1,21 +1,22 @@
 import './login.css';
 import FormValidation from '../FormValidation/FormValidation';
 import { Link } from 'react-router-dom';
-function Login() {
+function Login(props) {
   const {
     values, handleChange, errors, isValid,
   } = FormValidation({ login: '', password: '' });
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-  };
+  function handleSubmit(event) {
+    event.preventDefault();
+   props.handleSubmit(values)
+}
 
- function CheckValidate(event)  {  
-     if (event.key === ' ') {
-      event.preventDefault();
-     }
+function CheckValidate(event)  {  
+ if (event.key === ' ') {
+  event.preventDefault();
+ }
 
-  }
+}
     return (
      <>
      <div className='title'>
@@ -33,7 +34,7 @@ function Login() {
           <input name="password" type="password" id='password' minLength={1} maxLength={30} value={values.password} onChange={handleChange} className="text regform__input" placeholder="Введите пароль" required/>
           <p className="text form__error">{errors.password}</p>
   </label>
-        <button type="submit" className={`btn button__signin reg__btn-signin ${isValid ? '' : 'disable'}`}><Link to={'/main'} className="btn signin__ent ent_sign">Авторизоваться</Link></button>
+        <button type="submit" className={`btn button__signin reg__btn-signin ${isValid ? '' : 'disable'}`}>Авторизоваться</button>
         <p className='btn button__login reg__btn-login'><Link to={'/registration'} className="btn login__ent ent__sign">Нет аккаунта?</Link></p>
      </form>
      
