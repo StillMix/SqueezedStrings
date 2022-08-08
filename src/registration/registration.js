@@ -1,6 +1,6 @@
 import './registration.css';
 
-import React,{useState} from 'react';
+import React from 'react';
 import FormValidation from '../FormValidation/FormValidation';
 import { Link } from 'react-router-dom';
 function Registration(props) {

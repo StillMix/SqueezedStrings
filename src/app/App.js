@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   Switch,
   Route,
-  useHistory,
   Redirect,
 } from 'react-router-dom';
 import './App.css';
@@ -18,16 +17,13 @@ import apiAuth from '../utils/Auth.js'
 
 
 function App() {
-  const history = useHistory();
   const [loggedIn, setloggedIn] = useState(false);
-  const [userEmail, setuserEmail] = useState(null);
-  const [currentUser, setCurrentUser] = useState(null);
   const [isInfoToolTip, setisInfoToolTip] = useState(false);
 
   function get() {
     api.getUserInfo().then((user) => {
       if(user){
-        setCurrentUser(user);
+        console.log(user)
       }
     }).catch((err) => {
       console.log(err)
@@ -40,10 +36,7 @@ function App() {
      if(res.message === 'Необходима авторизация'){
       console.log(res)
      }else{
-       const jwt = res;
-       setuserEmail(jwt.data.login)
        setloggedIn(true)
-       setCurrentUser(res);
      }
    }).catch(err => console.log(err));
  }
@@ -52,10 +45,9 @@ function App() {
   tokenCheck()
 },[])
  function handleLogin(login){
-  setuserEmail(login)
   setloggedIn(true)
 }
- 
+
  function login(log) {
    if (!log){
      return;
@@ -67,6 +59,7 @@ function App() {
      }else{
        handleLogin(log.login);
        get()
+       console.log(isInfoToolTip)
        localStorage.setItem('jwt', log.login);
      }
    })
